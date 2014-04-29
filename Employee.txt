@@ -1,0 +1,3 @@
+MANAGER	ADMIN	password
+EMPLOYEE	TPOTTS	password1
+EMPLOYEE	TIM	belcher

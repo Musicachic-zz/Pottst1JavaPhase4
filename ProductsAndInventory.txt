@@ -1,0 +1,7 @@
+11111111	Street Fighter IV	40.0	20
+12345678	Street Fighter 2	20.0	20
+87654321	Street Fighter 3	30.0	20
+22222222	Marvel vs Capcom 3	50.25	20
+33333333	Mortal Kombat	40.0	20
+44444444	Killer Instinct	19.99	5
+55555555	Killer Instinct 2	29.99	4
