@@ -98,6 +98,11 @@ public class Employee implements Serializable
 	{
 		this.accessLevel = accessLevel;
 	}
+
+	public String toDataText(){
+		return accessLevel + "\t" + username + "\t" + new String(password);
+
+	}
 }
 
 

@@ -227,6 +227,7 @@ public class AddRemoveEmployeesDisplay
 
 						while (option == false)
 						{
+							int objIndex = ExtractEmployees.employee.indexOf(e);
 
 							if (change.equalsIgnoreCase("p"))
 							{
@@ -234,6 +235,12 @@ public class AddRemoveEmployeesDisplay
 								System.out.println("Please enter the new password for the user: ");
 								char[] newPassword = sc.nextLine().toCharArray();
 								e.setPassword(newPassword);
+
+								ExtractEmployees.employee.set(objIndex, e);
+								writeAllEmployeesToFile(ExtractEmployees.employee);
+
+
+
 							}
 							else if (change.equalsIgnoreCase("a"))
 							{
@@ -255,6 +262,8 @@ public class AddRemoveEmployeesDisplay
 								}
 
 								e.setAccessLevel(accessLevel);
+								ExtractEmployees.employee.set(objIndex, e);
+								writeAllEmployeesToFile(ExtractEmployees.employee);
 
 							}
 							else
@@ -298,13 +307,31 @@ public class AddRemoveEmployeesDisplay
 		for (Employee e : ExtractEmployees.employee)
 		{
 			String username = e.getUsername();
-			//char[] password = e.getPassword();
+			char[] password = e.getPassword();
 			String accessLevel = e.getAccessLevel();
 
 			System.out.println(username + "\t\t\t" + accessLevel);
 		}
 		System.out.println("+------------------------------------+");
 
+	}
+
+	public static void writeAllEmployeesToFile(List<Employee> employeeList){
+
+		File f = new File("Employee.txt");
+
+		PrintWriter pw = null;
+
+		try{
+			pw = new PrintWriter(f);
+
+		}catch(FileNotFoundException e1){
+			System.out.println("File not found. ");
+		}
+		for(Employee e : employeeList){
+			pw.println(e.toDataText());
+		}
+		pw.close();
 	}
 
 	public static void sendRequest(Employee employee) throws Exception
