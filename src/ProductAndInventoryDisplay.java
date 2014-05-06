@@ -10,6 +10,7 @@
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -190,6 +191,7 @@ public class ProductAndInventoryDisplay
 
 						while (option == false)
 						{
+							int objIndex = ExtractProductsAndInventory.prod.indexOf(p);
 							if (change.equalsIgnoreCase("UPC"))
 							{
 
@@ -197,6 +199,9 @@ public class ProductAndInventoryDisplay
 								System.out.println("Please enter the new upc for the product: ");
 								String newUpc = sc.nextLine();
 								p.setUpc(newUpc);
+
+								ExtractProductsAndInventory.prod.set(objIndex, p);
+								writeAllInventoryToFile(ExtractProductsAndInventory.prod);
 							}
 							else if (change.equalsIgnoreCase("DESCRIPTION"))
 							{
@@ -205,6 +210,9 @@ public class ProductAndInventoryDisplay
 								System.out.println("Please enter the new description for the product: ");
 								String newDesc = sc.nextLine();
 								p.setDescription(newDesc);
+
+								ExtractProductsAndInventory.prod.set(objIndex, p);
+								writeAllInventoryToFile(ExtractProductsAndInventory.prod);
 							}
 							else if (change.equalsIgnoreCase("PRICE"))
 							{
@@ -213,6 +221,9 @@ public class ProductAndInventoryDisplay
 								System.out.println("Please enter the new price: ");
 								BigDecimal newPrice = sc.nextBigDecimal();
 								p.setPrice(newPrice);
+
+								ExtractProductsAndInventory.prod.set(objIndex, p);
+								writeAllInventoryToFile(ExtractProductsAndInventory.prod);
 							}
 							else if (change.equalsIgnoreCase("QUANTITY"))
 							{
@@ -221,6 +232,9 @@ public class ProductAndInventoryDisplay
 								System.out.println("Please enter the new quantity: ");
 								Integer newQty = Integer.valueOf(sc.nextLine());
 								p.setQuantity(newQty);
+
+								ExtractProductsAndInventory.prod.set(objIndex, p);
+								writeAllInventoryToFile(ExtractProductsAndInventory.prod);
 							}
 							else
 							{
@@ -268,5 +282,27 @@ public class ProductAndInventoryDisplay
 			System.out.println(upc + "\t\t" + desc + "\t\t" + price + "\t\t" + quantity);
 		}
 		System.out.println("+----------------------------------------------------+");
+	}
+
+	public static void writeAllInventoryToFile(List<Product> productList)
+	{
+
+		File f = new File("ProductAndInventory.txt");
+
+		PrintWriter pw = null;
+
+		try
+		{
+			pw = new PrintWriter(f);
+		}
+		catch (FileNotFoundException e1)
+		{
+			System.out.println("File not found. ");
+		}
+		for (Product p : productList)
+		{
+			pw.println(p.toDataText());
+		}
+		pw.close();
 	}
 }

@@ -239,8 +239,6 @@ public class AddRemoveEmployeesDisplay
 								ExtractEmployees.employee.set(objIndex, e);
 								writeAllEmployeesToFile(ExtractEmployees.employee);
 
-
-
 							}
 							else if (change.equalsIgnoreCase("a"))
 							{
@@ -316,19 +314,24 @@ public class AddRemoveEmployeesDisplay
 
 	}
 
-	public static void writeAllEmployeesToFile(List<Employee> employeeList){
+	public static void writeAllEmployeesToFile(List<Employee> employeeList)
+	{
 
 		File f = new File("Employee.txt");
 
 		PrintWriter pw = null;
 
-		try{
+		try
+		{
 			pw = new PrintWriter(f);
 
-		}catch(FileNotFoundException e1){
+		}
+		catch (FileNotFoundException e1)
+		{
 			System.out.println("File not found. ");
 		}
-		for(Employee e : employeeList){
+		for (Employee e : employeeList)
+		{
 			pw.println(e.toDataText());
 		}
 		pw.close();
