@@ -161,4 +161,112 @@ public class ProductAndInventoryDisplay
 			System.out.println("Could not locate file.");
 		}
 	}
+
+	public static void modifyInventory()
+	{
+
+		File f = new File("ProductsAndInventory.txt");
+		String choice = "y";
+
+		try
+		{
+			PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+
+			while (choice.equalsIgnoreCase("y"))
+			{
+				System.out.println("Please enter the upc would like to modify: ");
+				String upc = sc.nextLine();
+				Boolean found = false;
+
+				for (Product p : ExtractProductsAndInventory.prod)
+				{
+
+					if (p.getUpc().equalsIgnoreCase(upc))
+					{
+						found = true;
+						System.out.println("Would you like to update the upc, description, price, or quantity? ");
+						String change = sc.nextLine();
+						Boolean option = false;
+
+						while (option == false)
+						{
+							if (change.equalsIgnoreCase("UPC"))
+							{
+
+								option = true;
+								System.out.println("Please enter the new upc for the product: ");
+								String newUpc = sc.nextLine();
+								p.setUpc(newUpc);
+							}
+							else if (change.equalsIgnoreCase("DESCRIPTION"))
+							{
+
+								option = true;
+								System.out.println("Please enter the new description for the product: ");
+								String newDesc = sc.nextLine();
+								p.setDescription(newDesc);
+							}
+							else if (change.equalsIgnoreCase("PRICE"))
+							{
+
+								option = true;
+								System.out.println("Please enter the new price: ");
+								BigDecimal newPrice = sc.nextBigDecimal();
+								p.setPrice(newPrice);
+							}
+							else if (change.equalsIgnoreCase("QUANTITY"))
+							{
+
+								option = true;
+								System.out.println("Please enter the new quantity: ");
+								Integer newQty = Integer.valueOf(sc.nextLine());
+								p.setQuantity(newQty);
+							}
+							else
+							{
+
+								option = false;
+								System.out.println("Please select a valid option: ");
+							}
+						}
+					}
+				}
+				if (!found)
+				{
+					System.out.println("Please select a different upc. ");
+				}
+				else
+				{
+					System.out.println("Would you like to modify another product? Y/N: ");
+					choice = sc.nextLine();
+				}
+			}
+
+		}
+		catch (FileNotFoundException e1)
+		{
+			e1.printStackTrace();
+		}
+
+	}
+
+	public static void viewInventory()
+	{
+
+		System.out.println("+----------------------------------------------------+");
+		System.out.println("UPC \t\t DESCRIPTION \t\t PRICE \t\t QUANTITY");
+		System.out.println("+----------------------------------------------------+");
+
+		for (Product p : ExtractProductsAndInventory.prod)
+		{
+
+			String upc = p.getUpc();
+			String desc = p.getDescription();
+			BigDecimal price = p.getPrice();
+			Integer quantity = p.getQuantity();
+
+			System.out.println(upc + "\t\t" + desc + "\t\t" + price + "\t\t" + quantity);
+		}
+		System.out.println("+----------------------------------------------------+");
+	}
 }

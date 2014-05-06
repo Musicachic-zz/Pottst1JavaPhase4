@@ -62,14 +62,18 @@ public class AskForInput
 				{
 					case "ADD":
 						System.out.println("You selected to add inventory.");
+						ProductAndInventoryDisplay.viewInventory();
 						ProductAndInventoryDisplay.addNewProduct();
 						break;
 					case "REMOVE":
 						System.out.println("You selected to remove inventory.");
+						ProductAndInventoryDisplay.viewInventory();
 						ProductAndInventoryDisplay.removeProduct();
 						break;
 					case "MODIFY":
 						System.out.println("You selected to modify inventory.");
+						ProductAndInventoryDisplay.viewInventory();
+						ProductAndInventoryDisplay.modifyInventory();
 						break;
 					case "EXIT":
 						System.out.println("You selected to exit the program.");
