@@ -22,7 +22,8 @@ public class Server
 
 		boolean t = true;
 
-		while (t) {
+		while (t)
+		{
 			Socket s = servSock.accept();
 			new Thread(new RequestHandler(s)).start();
 		}

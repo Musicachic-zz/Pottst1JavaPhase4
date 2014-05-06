@@ -36,20 +36,26 @@ public class RequestHandler implements Runnable
 			ObjectInputStream is = new ObjectInputStream(new BufferedInputStream(sock.getInputStream()));
 			Object o = is.readObject();
 			RequestCriteria requestCriteria = (RequestCriteria) o;
-			if(requestCriteria.getActionToTake() == RequestCriteria.Action.GETEMPLOYEES) {
+			if (requestCriteria.getActionToTake() == RequestCriteria.Action.GETEMPLOYEES)
+			{
 				//return all employees
 				ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(sock.getOutputStream()));
-			} else if(requestCriteria.getActionToTake() == RequestCriteria.Action.GETPRODUCTS) {
+			}
+			else if (requestCriteria.getActionToTake() == RequestCriteria.Action.GETPRODUCTS)
+			{
 				//return all products
 				ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(sock.getOutputStream()));
 				List<Employee> employees = null;
 				oos.writeObject(employees);
-			} else if(requestCriteria.getEmployee() != null)
+			}
+			else if (requestCriteria.getEmployee() != null)
 			{
 				//EmployeeHandler handler = new EmployeeHandler(employee);
 				//handler.handle(action);
 				//handleEmployee(employee, action);
-			}else {
+			}
+			else
+			{
 				//handle product
 			}
 		}

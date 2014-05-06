@@ -22,12 +22,14 @@ public class AskForInput
 
 		String choice = sc.nextLine();
 
-		switch (choice.toUpperCase()){
+		switch (choice.toUpperCase())
+		{
 			case "E":
 				System.out.println("You selected to change employee data.");
 				System.out.println("Do you want to Add, Modify, or Remove an employee?");
 				String echoice = sc.nextLine();
-				switch (echoice.toUpperCase()){
+				switch (echoice.toUpperCase())
+				{
 					case "ADD":
 						System.out.println("You selected to add an employee.");
 						AddRemoveEmployeesDisplay.viewEmployeesList();
@@ -56,7 +58,8 @@ public class AskForInput
 				System.out.println("You selected to change the inventory data.");
 				System.out.println("Do you want to Add, Modify, or Remove Products and Inventory");
 				String ichoice = sc.nextLine();
-				switch(ichoice.toUpperCase()){
+				switch (ichoice.toUpperCase())
+				{
 					case "ADD":
 						System.out.println("You selected to add inventory.");
 						ProductAndInventoryDisplay.addNewProduct();
@@ -86,7 +89,6 @@ public class AskForInput
 				initialQuestion();
 				break;
 		}
-
 
 	}
 }

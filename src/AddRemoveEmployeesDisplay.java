@@ -202,7 +202,6 @@ public class AddRemoveEmployeesDisplay
 	{
 
 		File f = new File("Employee.txt");
-
 		String choice = "y";
 
 		try
@@ -273,9 +272,10 @@ public class AddRemoveEmployeesDisplay
 					System.out.println("Please select a different username.");
 
 				}
-				else{
-				System.out.println("Would you like to modify another user? Y/N: ");
-				choice = sc.nextLine();
+				else
+				{
+					System.out.println("Would you like to modify another user? Y/N: ");
+					choice = sc.nextLine();
 				}
 			}
 

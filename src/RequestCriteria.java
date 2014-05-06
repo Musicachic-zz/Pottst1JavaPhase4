@@ -10,7 +10,8 @@
 
 public class RequestCriteria
 {
-	public enum Action {
+	public enum Action
+	{
 		ADD,
 		REMOVE,
 		MODIFY,
