@@ -218,16 +218,17 @@ public class AddRemoveEmployeesDisplay
 
 				for (Employee e : ExtractEmployees.employee)
 				{
+
 					if (e.getUsername().equalsIgnoreCase(username))
 					{
 						found = true;
 						System.out.println("Would you like to change their password or access level? P/A?");
-
+						String change = sc.nextLine();
 						Boolean option = false;
 
 						while (option == false)
 						{
-							String change = sc.nextLine();
+
 							if (change.equalsIgnoreCase("p"))
 							{
 								option = true;
@@ -256,7 +257,6 @@ public class AddRemoveEmployeesDisplay
 
 								e.setAccessLevel(accessLevel);
 
-
 							}
 							else
 							{
@@ -271,11 +271,12 @@ public class AddRemoveEmployeesDisplay
 				if (!found)
 				{
 					System.out.println("Please select a different username.");
-					username = sc.nextLine();
 
 				}
+				else{
 				System.out.println("Would you like to modify another user? Y/N: ");
 				choice = sc.nextLine();
+				}
 			}
 
 		}
