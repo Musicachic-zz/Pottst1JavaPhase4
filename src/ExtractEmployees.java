@@ -59,6 +59,7 @@ public class ExtractEmployees
 			//System.out.println("Password: " + fields[2]);
 			//System.out.println("Access Level: " + fields[0]);
 			employee.add(e);
+			//AddRemoveEmployeesDisplay.viewEmployeesList();
 
 		}
 

@@ -25,6 +25,8 @@ public class App
 		ExtractEmployees.readEmployeeFile();
 		ProductAndInventoryDisplay.doesFileExist();
 		ExtractProductsAndInventory.readProductFile();
+		//AddRemoveEmployeesDisplay.viewEmployeesList();
+		//ExtractEmployees.readEmployeeFile();
 		AskForInput.initialQuestion();
 	}
 }

@@ -10,6 +10,8 @@
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -20,6 +22,7 @@ public class AddRemoveEmployeesDisplay
 {
 	private static Scanner sc = new Scanner(System.in);
 	private static Employee em;
+	//public static List<Employee> employee = new ArrayList<>();
 	static String e = Employee.EMPLOYEE_LEVEL;
 	static String m = Employee.MANAGER_LEVEL;
 	static File f;
@@ -195,7 +198,116 @@ public class AddRemoveEmployeesDisplay
 		}
 	}
 
-	public static void sendRequest(Employee employee) throws Exception {
+	public static void modifyEmployee()
+	{
+
+		File f = new File("Employee.txt");
+
+		String choice = "y";
+
+		try
+		{
+			PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+
+			while (choice.equalsIgnoreCase("y"))
+			{
+
+				System.out.println("Please enter the username you like to modify: ");
+				String username = sc.nextLine();
+				Boolean found = false;
+
+				for (Employee e : ExtractEmployees.employee)
+				{
+					if (e.getUsername().equalsIgnoreCase(username))
+					{
+						found = true;
+						System.out.println("Would you like to change their password or access level? P/A?");
+
+						Boolean option = false;
+
+						while (option == false)
+						{
+							String change = sc.nextLine();
+							if (change.equalsIgnoreCase("p"))
+							{
+								option = true;
+								System.out.println("Please enter the new password for the user: ");
+								char[] newPassword = sc.nextLine().toCharArray();
+								e.setPassword(newPassword);
+							}
+							else if (change.equalsIgnoreCase("a"))
+							{
+								option = true;
+								System.out.println("Please enter the new access level for the user: A or E");
+								String accessLevel = sc.nextLine().toUpperCase();
+
+								switch (accessLevel)
+								{
+									case "E":
+										accessLevel = "EMPLOYEE";
+										break;
+									case "A":
+										accessLevel = "ADMIN";
+										break;
+									default:
+										System.out.println("Please enter a valid option: ");
+										accessLevel = sc.nextLine().toUpperCase();
+								}
+
+								e.setAccessLevel(accessLevel);
+
+
+							}
+							else
+							{
+								option = false;
+								System.out.println("Please select a valid option: P/A?: ");
+
+							}
+						}
+					}
+
+				}
+				if (!found)
+				{
+					System.out.println("Please select a different username.");
+					username = sc.nextLine();
+
+				}
+				System.out.println("Would you like to modify another user? Y/N: ");
+				choice = sc.nextLine();
+			}
+
+		}
+
+		catch (FileNotFoundException e1)
+		{
+			e1.printStackTrace();
+		}
+	}
+
+	public static void viewEmployeesList()
+	{
+
+		//List<Employee> employee = new ArrayList<>();
+		System.out.println("+------------------------------------+");
+		System.out.println("USERNAME \t\t ACCESS LEVEL");
+		System.out.println("+------------------------------------+");
+
+		for (Employee e : ExtractEmployees.employee)
+		{
+			String username = e.getUsername();
+			//char[] password = e.getPassword();
+			String accessLevel = e.getAccessLevel();
+
+			System.out.println(username + "\t\t\t" + accessLevel);
+		}
+		System.out.println("+------------------------------------+");
+
+	}
+
+	public static void sendRequest(Employee employee) throws Exception
+	{
 		Socket s = new Socket("localhost", 12345);
 
 		ObjectOutputStream os = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));

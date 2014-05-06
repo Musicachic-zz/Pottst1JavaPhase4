@@ -30,14 +30,18 @@ public class AskForInput
 				switch (echoice.toUpperCase()){
 					case "ADD":
 						System.out.println("You selected to add an employee.");
+						AddRemoveEmployeesDisplay.viewEmployeesList();
 						AddRemoveEmployeesDisplay.addEmployee();
 						break;
 					case "REMOVE":
 						System.out.println("You selected to remove an employee.");
+						AddRemoveEmployeesDisplay.viewEmployeesList();
 						AddRemoveEmployeesDisplay.removeEmployee();
 						break;
 					case "MODIFY":
 						System.out.println("You selected to modify an employee.");
+						AddRemoveEmployeesDisplay.viewEmployeesList();
+						AddRemoveEmployeesDisplay.modifyEmployee();
 						break;
 					case "EXIT":
 						System.out.println("You selected to exit the program.");

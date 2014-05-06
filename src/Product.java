@@ -30,15 +30,6 @@ public class Product implements Serializable
 
 	}
 
-	public Product(String upc, String description, BigDecimal price, int quantity, int numInStock)
-	{
-		this.upc = upc;
-		this.description = description;
-		this.price = price;
-		this.quantity = quantity;
-		this.numInStock = numInStock;
-	}
-
 	public Product(String upc, String description, BigDecimal price, int quantity)
 	{
 		this.upc = upc;
