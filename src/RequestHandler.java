@@ -65,7 +65,7 @@ public class RequestHandler implements Runnable
 		}
 		catch (ClassNotFoundException e)
 		{
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			e.printStackTrace();
 		}
 	}
 
