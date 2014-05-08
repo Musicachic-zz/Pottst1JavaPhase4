@@ -101,7 +101,7 @@ public class Employee implements Serializable
 
 	public String toDataText()
 	{
-		return accessLevel + "\t" + username + "\t" + new String(password);
+		return accessLevel + "\t" + username + "\t" + password;
 
 	}
 }

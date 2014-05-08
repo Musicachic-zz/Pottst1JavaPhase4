@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 public class ExtractEmployees
 {
-	public static List<Employee> employee = new ArrayList<>();
+	public static ArrayList<Employee> employee = new ArrayList<>();
 	String tempUsername = null;
 	public static String loggedInUsername;
 
@@ -30,7 +30,7 @@ public class ExtractEmployees
 	 *
 	 * @return employee
 	 */
-	public static List<Employee> readEmployeeFile()
+	public static ArrayList<Employee> readEmployeeFile()
 	{
 
 		File f = new File("Employee.txt");

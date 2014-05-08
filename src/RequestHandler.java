@@ -39,7 +39,10 @@ public class RequestHandler implements Runnable
 			if (requestCriteria.getActionToTake() == RequestCriteria.Action.GETEMPLOYEES)
 			{
 				//return all employees
+				Response response = new Response("SUCCESS", ExtractEmployees.employee);
 				ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(sock.getOutputStream()));
+				oos.writeObject(response);
+				oos.flush();
 			}
 			else if (requestCriteria.getActionToTake() == RequestCriteria.Action.GETPRODUCTS)
 			{

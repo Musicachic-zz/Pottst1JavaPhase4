@@ -8,7 +8,9 @@
 *
 */
 
-public class RequestCriteria
+import java.io.Serializable;
+
+public class RequestCriteria implements Serializable
 {
 	public enum Action
 	{
