@@ -12,14 +12,11 @@ import java.io.Serializable;
 
 public class RequestCriteria implements Serializable
 {
-	public enum Action
-	{
-		ADD,
-		REMOVE,
-		MODIFY,
-		GETPRODUCTS,
-		GETEMPLOYEES
-	}
+	public static final String ADD = "ADD";
+	public static final String REMOVE = "REMOVE";
+	public static final String MODIFY = "MODIFY";
+	public static final String GETPRODUCTS = "GETPRODUCTS";
+	public static final String GETEMPLOYEES = "GETEMPLOYEES";
 
 	private Action actionToTake;
 	private Employee employee;

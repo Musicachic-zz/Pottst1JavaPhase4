@@ -23,7 +23,7 @@ public class Client
 			Socket s = new Socket("localhost", 12345);
 			ObjectOutputStream os = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
 
-			os.writeObject(new RequestCriteria(RequestCriteria.Action.GETEMPLOYEES, null, null));
+			os.writeObject(new Request(RequestCriteria.Action.GETEMPLOYEES, null));
 			os.flush();
 
 			ObjectInputStream is = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
@@ -36,7 +36,7 @@ public class Client
 				List<Employee> em = (List<Employee>) resp.getPayload();
 				for (Employee m : em)
 				{
-					System.out.println(m);
+					System.out.println(m.getUsername());
 				}
 
 			}
