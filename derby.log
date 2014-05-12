@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Fri May 02 21:30:36 EDT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-0145-bfb4-4f09-000004e27790 
+on database directory C:\Users\Musicachic\Downloads\JUnit Extra Credit 1\Pottst1JavaPhase4\POPDB  with class loader sun.misc.Launcher$AppClassLoader@25917a08 
+Loaded from file:/C:/Users/Musicachic/Downloads/Derby%20Setup/Derby%20Setup/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_25-b17
+user.dir=C:\Users\Musicachic\Downloads\JUnit Extra Credit 1\Pottst1JavaPhase4
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
