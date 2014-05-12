@@ -12,26 +12,29 @@ import java.io.Serializable;
 
 public class RequestCriteria implements Serializable
 {
-	public static final String ADD = "ADD";
-	public static final String REMOVE = "REMOVE";
-	public static final String MODIFY = "MODIFY";
-	public static final String GETPRODUCTS = "GETPRODUCTS";
-	public static final String GETEMPLOYEES = "GETEMPLOYEES";
-
 	private Action actionToTake;
 	private Employee employee;
 	private Product product;
 
-	public RequestCriteria(Action actionToTake, Employee employee, Product product)
+	public enum Action{
+	ADD,
+	REMOVE,
+	MODIFY,
+	GETPRODUCTS,
+	GETEMPLOYEES;
+}
+
+	public RequestCriteria(Employee employee, Product product, Action actionToTake)
 	{
-		this.actionToTake = actionToTake;
+
 		this.employee = employee;
 		this.product = product;
+		this.actionToTake = actionToTake;
 	}
 
-	public Action getActionToTake()
+	public RequestCriteria(String add, Employee employee)
 	{
-		return actionToTake;
+		//To change body of created methods use File | Settings | File Templates.
 	}
 
 	public Employee getEmployee()
@@ -42,5 +45,9 @@ public class RequestCriteria implements Serializable
 	public Product getProduct()
 	{
 		return product;
+	}
+	public Action getActionToTake()
+	{
+		return actionToTake;
 	}
 }

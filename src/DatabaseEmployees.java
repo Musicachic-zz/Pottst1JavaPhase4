@@ -17,8 +17,9 @@ public class DatabaseEmployees
 	private static final String DERBY_CREATE_CONNECTION = "jdbc:derby:POPDB;create=true";
 	private static final String ADD_USER = "INSERT INTO EMPLOYEE (USERNAME, PASSWORD, MANAGER) VALUES (?, ?, ?)";
 	private static final String DISPLAY_USERS = "SELECT USERNAME, PASSWORD, MANAGER FROM EMPLOYEE";
-	private static final String DELETE_USER = "DELETE EMPLOYEE WHERE USERNAME = ?";
+	private static final String DELETE_USER = "DELETE EMPLOYEE WHERE USERNAME = ? AND USERNAME not 'ADMIN'";
 	private static final String SELECT_EMP = "SELECT USERNAME, PASSWORD, MANAGER FROM EMPLOYEE WHERE USERNAME = ?";
+	private static final String UPDATE_USER = "UPDATE EMPLOYEE SET PASSWORD = ?, MANAGER = ? WHERE USERNAME = ?";
 
 	public void dbExist()
 	{
@@ -32,16 +33,19 @@ public class DatabaseEmployees
 		}
 	}
 
-	public void createUser(){
-		Employee em =  new Employee();
+	public void createUser()
+	{
+		Employee em = new Employee();
 
-		if(em != null){
+		if (em != null)
+		{
 			try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
 			{
-				try(PreparedStatement addUser =  derbyCon.prepareStatement(ADD_USER)){
-					addUser.setString(1,em.getUsername());
+				try (PreparedStatement addUser = derbyCon.prepareStatement(ADD_USER))
+				{
+					addUser.setString(1, em.getUsername());
 					addUser.setString(2, new String(em.getPassword()));
-					addUser.setString(3, em.getAccessLevel());
+					addUser.setString(3, String.valueOf(em.getAccessLevel()));
 
 					addUser.execute();
 
@@ -54,28 +58,29 @@ public class DatabaseEmployees
 		}
 	}
 
-	public void DisplayAllUsers(){
+	public void DisplayAllUsers()
+	{
 		ArrayList<Employee> employees = new ArrayList<>();
 
 		try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
 		{
-			try(PreparedStatement displayUsers = derbyCon.prepareStatement(DISPLAY_USERS)){
+			try (PreparedStatement displayUsers = derbyCon.prepareStatement(DISPLAY_USERS))
+			{
 
 				displayUsers.execute();
 			}
 		}
-		catch(SQLException e)
+		catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
 
 	}
 
-	public void DeleteUser(String username){
+	public void DeleteUser(String username)
+	{
 
 		Employee em = null;
-
-
 
 		try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
 		{
@@ -83,17 +88,36 @@ public class DatabaseEmployees
 			stmt.setString(1, username);
 			ResultSet rs = stmt.executeQuery();
 
-			if(rs.next()){
+			if (rs.next())
+			{
 
 			}
-			try(PreparedStatement deleteUsers = derbyCon.prepareStatement(DELETE_USER));
-			deleteUsers.setString(1, username);
+			try (PreparedStatement deleteUsers = derbyCon.prepareStatement(DELETE_USER))
+			{
+				deleteUsers.setString(1, username);
 
+			}
 
-
-	}
+		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 		}
-	}}
+	}
+
+	public void UpdateUser(String username) {
+		Employee em = null;
+		try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
+		{
+			PreparedStatement stmt = derbyCon.prepareStatement(UPDATE_USER);
+			stmt.setString(1, new String(em.getPassword()));
+			stmt.setString(2, em.getAccessLevel() ? "Y" : "");
+			stmt.setString(3, em.getUsername());
+
+			System.out.println("Rows updated: " + stmt.executeUpdate());
+	}
+		catch(SQLException e){
+		e.printStackTrace();
+		}
+	}
+}

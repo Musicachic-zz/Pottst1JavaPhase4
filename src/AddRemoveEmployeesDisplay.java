@@ -23,8 +23,7 @@ public class AddRemoveEmployeesDisplay
 	private static Scanner sc = new Scanner(System.in);
 	private static Employee em;
 	//public static List<Employee> employee = new ArrayList<>();
-	static String e = Employee.EMPLOYEE_LEVEL;
-	static String m = Employee.MANAGER_LEVEL;
+	static boolean mgrLevel;
 	static File f;
 	static PrintWriter pw = null;
 
@@ -82,22 +81,22 @@ public class AddRemoveEmployeesDisplay
 				System.out.print("Please enter the password you would like to add: ");
 				char[] password = sc.nextLine().toCharArray();
 
-				System.out.print("What is the access level? E for Employee or M for Manager ");
+				System.out.print("What is the access level? Y for Manager or N for Employee ");
 				String levelEntered = sc.nextLine();
 
-				String employeeLevel = null;
+				String employeeLevel= null;
 				boolean successful = false;
 
 				while (!successful)
 				{
 					switch (levelEntered.toUpperCase())
 					{
-						case "E":
-							employeeLevel = e;
+						case "Y":
+							employeeLevel = "Y";
 							successful = true;
 							break;
-						case "M":
-							employeeLevel = m;
+						case "N":
+							employeeLevel = "N";
 							successful = true;
 							break;
 						default:
@@ -107,12 +106,12 @@ public class AddRemoveEmployeesDisplay
 					}
 				}
 
-				em = new Employee(username, password, employeeLevel);
+				em = new Employee(username, password, mgrLevel);
 				//String choice = "y";
 
 				pw.write(em.getAccessLevel() + "\t");
 				pw.write(em.getUsername() + "\t");
-				pw.write(String.valueOf(em.getPassword()) + "\n");
+				pw.write(em.getPassword() + "\n");
 
 				System.out.print("Would you like to add another user? Y or N ");
 				choice = sc.nextLine();
@@ -259,7 +258,7 @@ public class AddRemoveEmployeesDisplay
 										accessLevel = sc.nextLine().toUpperCase();
 								}
 
-								e.setAccessLevel(accessLevel);
+								e.setAccessLevel(Boolean.parseBoolean(accessLevel));
 								ExtractEmployees.employee.set(objIndex, e);
 								writeAllEmployeesToFile(ExtractEmployees.employee);
 
@@ -306,7 +305,7 @@ public class AddRemoveEmployeesDisplay
 		{
 			String username = e.getUsername();
 			char[] password = e.getPassword();
-			String accessLevel = e.getAccessLevel();
+			boolean accessLevel = e.getAccessLevel();
 
 			System.out.println(username + "\t\t\t" + accessLevel);
 		}
@@ -343,7 +342,7 @@ public class AddRemoveEmployeesDisplay
 
 		ObjectOutputStream os = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
 
-		os.writeObject(new RequestCriteria(RequestCriteria.Action.ADD, employee, null));
+		os.writeObject(new RequestCriteria(employee, null, null));
 
 		os.close();
 		s.close();

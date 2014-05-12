@@ -17,18 +17,16 @@ import java.io.Serializable;
 
 public class Employee implements Serializable
 {
-	public static final String MANAGER_LEVEL = "MANAGER";
-	public static final String EMPLOYEE_LEVEL = "EMPLOYEE";
 
 	private String username;
 	private char[] password;
-	private String accessLevel;
+	private boolean accessLevel;
 
 	public Employee()
 	{
 	}
 
-	public Employee(String username, char[] password, String accessLevel)
+	public Employee(String username, char[] password, boolean accessLevel)
 	{
 		this.username = username;
 		this.password = password;
@@ -84,7 +82,7 @@ public class Employee implements Serializable
 	 *
 	 * @return accessLevel of Employee or Manager
 	 */
-	public String getAccessLevel()
+	public boolean getAccessLevel()
 	{
 		return accessLevel;
 	}
@@ -94,14 +92,14 @@ public class Employee implements Serializable
 	 *
 	 * @param accessLevel The string accessLevel is passed in.
 	 */
-	public void setAccessLevel(String accessLevel)
+	public void setAccessLevel(boolean accessLevel)
 	{
 		this.accessLevel = accessLevel;
 	}
 
 	public String toDataText()
 	{
-		return accessLevel + "\t" + username + "\t" + password;
+		return (accessLevel?"Y":"N") + "\t" + username + "\t" + password;
 
 	}
 }

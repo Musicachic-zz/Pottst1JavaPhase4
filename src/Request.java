@@ -20,6 +20,7 @@ public class Request implements Serializable
 		this.payload = payload;
 	}
 
+
 	public String getHeader() {
 		return header;
 	}
@@ -27,4 +28,5 @@ public class Request implements Serializable
 	public Object getPayload() {
 		return payload;
 	}
+
 }

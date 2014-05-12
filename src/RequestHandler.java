@@ -10,72 +10,64 @@
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class RequestHandler implements Runnable {
-
+public class RequestHandler implements Runnable
+{
 	private Socket sock;
 
-	public RequestHandler(Socket sock) {
+	public RequestHandler(Socket sock)
+	{
 		this.sock = sock;
+
+/*		synchronized (counter)
+		{
+			num = counter;
+			counter++;
+		}*/
 	}
 
 	@Override
-	public void run() {
-		Request req = null;
-
-		// Step 2 - Receive request from client
-		try {
-			ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(sock.getInputStream()));
-			req = (Request) ois.readObject();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		// Step 3 - Send something back
-		Response resp = null;
-
-		if (req != null) {
-			switch(req.getHeader()) {
-				case "LIST EMPLOYEE":
-					ArrayList<Employee> emps = listEmployees();
-					resp = new Response("SUCCESS", emps);
-					break;
-				case "ADD EMPLOYEE":
-					addEmployee((Employee)req.getPayload());
-					resp = new Response("SUCCESS", (Employee)req.getPayload());
-					break;
+	public void run()
+	{
+		try
+		{
+			ObjectInputStream is = new ObjectInputStream(new BufferedInputStream(sock.getInputStream()));
+			Object o = is.readObject();
+			RequestCriteria requestCriteria = (RequestCriteria) o;
+			if (requestCriteria.getActionToTake() == RequestCriteria.Action.GETEMPLOYEES)
+			{
+				//return all employees
+				Response response = new Response("SUCCESS", ExtractEmployees.employee);
+				ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(sock.getOutputStream()));
+				oos.writeObject(response);
+				oos.flush();
+			}
+			else if (requestCriteria.getActionToTake() == RequestCriteria.Action.GETPRODUCTS)
+			{
+				//return all products
+				ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(sock.getOutputStream()));
+				List<Employee> employees = null;
+				oos.writeObject(employees);
+			}
+			else if (requestCriteria.getEmployee() != null)
+			{
+				//EmployeeHandler handler = new EmployeeHandler(employee);
+				//handler.handle(action);
+				//handleEmployee(employee, action);
+			}
+			else
+			{
+				//handle product
 			}
 		}
-
-		try {
-			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(sock.getOutputStream()));
-			oos.writeObject(resp);
-			oos.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
+		catch (IOException e2)
+		{
+			e2.printStackTrace();
 		}
-
-	}
-
-	public ArrayList<Employee> listEmployees() {
-		ArrayList<Employee> emps = new ArrayList<Employee>();
-		try {
-			emps.addAll(DaoFactory.getEmployeeDao().listAll());
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-		}
-		return emps;
-	}
-
-	public void addEmployee(Employee m) {
-		try {
-			DaoFactory.getEmployeeDao().create(m);
-		} catch (DataAccessException e) {
+		catch (ClassNotFoundException e)
+		{
 			e.printStackTrace();
 		}
 	}

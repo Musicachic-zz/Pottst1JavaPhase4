@@ -23,7 +23,7 @@ public class Client
 			Socket s = new Socket("localhost", 12345);
 			ObjectOutputStream os = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
 
-			os.writeObject(new Request(RequestCriteria.Action.GETEMPLOYEES, null));
+			os.writeObject(new RequestCriteria(null, null, RequestCriteria.Action.GETEMPLOYEES));
 			os.flush();
 
 			ObjectInputStream is = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
@@ -63,7 +63,7 @@ public class Client
 
 			Employee m = new Employee();
 			m.toDataText();
-			os.writeObject(new RequestCriteria(RequestCriteria.Action.ADD, m, null));
+			os.writeObject(new RequestCriteria(null,null,RequestCriteria.Action.ADD));
 			os.flush();
 
 			ObjectInputStream is = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
