@@ -57,13 +57,14 @@ public class Client
 			e.printStackTrace();
 		}
 
-		try {
+		try
+		{
 			Socket s = new Socket("localhost", 12345);
 			ObjectOutputStream os = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
 
 			Employee m = new Employee();
 			m.toDataText();
-			os.writeObject(new RequestCriteria(null,null,RequestCriteria.Action.ADD));
+			os.writeObject(new RequestCriteria(null, null, RequestCriteria.Action.ADD));
 			os.flush();
 
 			ObjectInputStream is = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
@@ -72,15 +73,23 @@ public class Client
 
 			s.close();
 
-		}catch(UnknownHostException e){
+		}
+		catch (UnknownHostException e)
+		{
 			e.printStackTrace();
-		}catch(IOException e){
-			e.printStackTrace();;
-		}catch(ClassNotFoundException e){
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+			;
+		}
+		catch (ClassNotFoundException e)
+		{
 			e.printStackTrace();
 		}
 
-		try {
+		try
+		{
 			Socket s = new Socket("localhost", 12345);
 			ObjectOutputStream os = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
 
@@ -90,22 +99,30 @@ public class Client
 			ObjectInputStream is = new ObjectInputStream(new BufferedInputStream(s.getInputStream()));
 			Response resp = (Response) is.readObject();
 
-			if (resp.getHeader().equals("SUCCESS")) {
+			if (resp.getHeader().equals("SUCCESS"))
+			{
 
 				@SuppressWarnings("unchecked")
 				List<Employee> em = (List<Employee>) resp.getPayload();
-				for (Employee m: em) {
+				for (Employee m : em)
+				{
 					System.out.println(m);
 				}
 
 			}
 
 			s.close();
-		} catch (UnknownHostException e) {
+		}
+		catch (UnknownHostException e)
+		{
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		}
+		catch (ClassNotFoundException e)
+		{
 			e.printStackTrace();
 		}
 

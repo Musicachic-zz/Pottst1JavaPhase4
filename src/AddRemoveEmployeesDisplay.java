@@ -84,7 +84,7 @@ public class AddRemoveEmployeesDisplay
 				System.out.print("What is the access level? Y for Manager or N for Employee ");
 				String levelEntered = sc.nextLine();
 
-				String employeeLevel= null;
+				String employeeLevel = null;
 				boolean successful = false;
 
 				while (!successful)

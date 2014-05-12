@@ -8,11 +8,13 @@
 *
 */
 
-public class DataAccessException extends Exception {
+public class DataAccessException extends Exception
+{
 
 	private static final long serialVersionUID = -3544791705580385588L;
 
-	public DataAccessException(String message) {
+	public DataAccessException(String message)
+	{
 		super(message);
 	}
 }

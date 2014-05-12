@@ -105,7 +105,8 @@ public class DatabaseEmployees
 		}
 	}
 
-	public void UpdateUser(String username) {
+	public void UpdateUser(String username)
+	{
 		Employee em = null;
 		try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
 		{
@@ -115,9 +116,10 @@ public class DatabaseEmployees
 			stmt.setString(3, em.getUsername());
 
 			System.out.println("Rows updated: " + stmt.executeUpdate());
-	}
-		catch(SQLException e){
-		e.printStackTrace();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
 		}
 	}
 }

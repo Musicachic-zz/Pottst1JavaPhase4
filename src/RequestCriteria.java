@@ -16,13 +16,14 @@ public class RequestCriteria implements Serializable
 	private Employee employee;
 	private Product product;
 
-	public enum Action{
-	ADD,
-	REMOVE,
-	MODIFY,
-	GETPRODUCTS,
-	GETEMPLOYEES;
-}
+	public enum Action
+	{
+		ADD,
+		REMOVE,
+		MODIFY,
+		GETPRODUCTS,
+		GETEMPLOYEES;
+	}
 
 	public RequestCriteria(Employee employee, Product product, Action actionToTake)
 	{
@@ -46,6 +47,7 @@ public class RequestCriteria implements Serializable
 	{
 		return product;
 	}
+
 	public Action getActionToTake()
 	{
 		return actionToTake;

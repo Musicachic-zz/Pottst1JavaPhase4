@@ -61,19 +61,25 @@ public class DatabaseInventory
 		}
 	}
 
-	public void DisplayAllInventory(){
+	public void DisplayAllInventory()
+	{
 		ArrayList<Product> products = new ArrayList<>();
 
-		try(Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION)){
-			try(PreparedStatement displayInventory = derbyCon.prepareStatement(DISPLAY_INVENTORY)){
+		try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
+		{
+			try (PreparedStatement displayInventory = derbyCon.prepareStatement(DISPLAY_INVENTORY))
+			{
 				displayInventory.execute();
 			}
-		}catch(SQLException e){
+		}
+		catch (SQLException e)
+		{
 			e.printStackTrace();
 		}
 	}
 
-	public void DeleteInventory(String upc){
+	public void DeleteInventory(String upc)
+	{
 		Product p = null;
 
 		try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
@@ -99,7 +105,8 @@ public class DatabaseInventory
 		}
 	}
 
-	public void UpdateInventory(String upc){
+	public void UpdateInventory(String upc)
+	{
 		Product p = null;
 
 		try (Connection derbyCon = DriverManager.getConnection(DERBY_CREATE_CONNECTION))
@@ -111,7 +118,8 @@ public class DatabaseInventory
 
 			System.out.println("Rows updated: " + stmt.executeUpdate());
 		}
-		catch(SQLException e){
+		catch (SQLException e)
+		{
 			e.printStackTrace();
 		}
 	}
