@@ -97,6 +97,10 @@ public class Employee implements Serializable
 		this.accessLevel = accessLevel;
 	}
 
+	/**
+	 * This is a method to format the display the employee data.
+	 * @return
+	 */
 	public String toDataText()
 	{
 		return (accessLevel ? "Y" : "N") + "\t" + username + "\t" + password;

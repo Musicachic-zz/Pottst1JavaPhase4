@@ -16,7 +16,8 @@
 public class App
 {
 	/**
-	 * This method is the main method that fires off the running of the Phase 4 code.
+	 * This method is the main method that fires off the running of the Phase 4 code if only using the text file
+	 * version of the code. This does not integrate with the server or database.
 	 */
 
 	public static void main(String[] args)

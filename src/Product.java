@@ -190,6 +190,10 @@ public class Product implements Serializable
 		return upc.hashCode();
 	}
 
+	/**
+	 * This method displays the output of the product data in a readable format.
+	 * @return
+	 */
 	public String toDataText()
 	{
 		return upc + "\t" + description + "\t" + price + "\t" + quantity;

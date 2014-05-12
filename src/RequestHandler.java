@@ -13,6 +13,9 @@ import java.net.Socket;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * This class contains the socket to sending data to the server.
+ */
 public class RequestHandler implements Runnable
 {
 	private Socket sock;
@@ -28,6 +31,10 @@ public class RequestHandler implements Runnable
 		}*/
 	}
 
+	/**
+	 * This method was supposed to do the work to get the data back from the server,
+	 * but I couldn't connect it correctly.
+	 */
 	@Override
 	public void run()
 	{

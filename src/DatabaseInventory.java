@@ -11,6 +11,9 @@
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * This class contains the SQL statements for completing changes to the inventory table.
+ */
 public class DatabaseInventory
 {
 	private static final String DERBY_DRIVER_CLASS = "org.apache.derby.jdbc.EmbeddedDriver";
@@ -24,6 +27,9 @@ public class DatabaseInventory
 	private static final String UPDATE_INVENTORY = "UPDATE INVENTORY SET DESCRIPTION = ?, PRICE = ?, " +
 			                                               "NUM_STOCK = ? WHERE UPC = ?";
 
+	/**
+	 * This method does a check to see if the database exists.
+	 */
 	public void dbExist()
 	{
 		try
@@ -36,6 +42,9 @@ public class DatabaseInventory
 		}
 	}
 
+	/**
+	 *  This method contains the SQL statements to complete inserting new inventory into the database.
+	 */
 	public void createInventory()
 	{
 		Product p = new Product();
@@ -61,6 +70,9 @@ public class DatabaseInventory
 		}
 	}
 
+	/**
+	 * This method contains the SQL statements to show the inventory currently in the database.
+	 */
 	public void DisplayAllInventory()
 	{
 		ArrayList<Product> products = new ArrayList<>();
@@ -78,6 +90,11 @@ public class DatabaseInventory
 		}
 	}
 
+	/**
+	 * This method contains the SQL code to delete inventory from the database. It first allows you to search for the
+	 * upc you want to delete and then executes the delete statement.
+	 * @param upc
+	 */
 	public void DeleteInventory(String upc)
 	{
 		Product p = null;
@@ -105,6 +122,11 @@ public class DatabaseInventory
 		}
 	}
 
+	/**
+	 * This method contains the SQL code to update inventory. It first allows you to find the upc you want to
+	 * update and then contains the SQL statement to perform the change.
+	 * @param upc
+	 */
 	public void UpdateInventory(String upc)
 	{
 		Product p = null;

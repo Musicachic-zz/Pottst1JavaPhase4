@@ -10,6 +10,10 @@
 
 import java.io.Serializable;
 
+/**
+ * This class contains the response constructor and getters for communication between the client and server. I never
+ * got this working.
+ */
 public class Response implements Serializable
 {
 	private String header;

@@ -13,6 +13,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * This was a test class to see if there was any way to view the contents of the database. It currently not being used.
+ */
 public class DerbyDatabaseView
 {
 
@@ -25,6 +28,11 @@ public class DerbyDatabaseView
 	private static final String VIEW_INVENTORY_TABLE =
 			"SELECT UPC, DESCRIPTION, PRICE, NUM_STOCK FROM INVENTORY";
 
+	/**
+	 * This method was used to see the data that was in the Employee table.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static void viewEmployee() throws ClassNotFoundException, SQLException
 	{
 		Class.forName(DERBY_DRIVER_CLASS);
@@ -36,6 +44,11 @@ public class DerbyDatabaseView
 		System.out.println("Viewing the employee table.");
 	}
 
+	/**
+	 * This method was used to see what data was in the Inventory table.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static void ViewInventory() throws ClassNotFoundException, SQLException
 	{
 		Class.forName(DERBY_DRIVER_CLASS);

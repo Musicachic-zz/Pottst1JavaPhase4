@@ -67,6 +67,10 @@ public class ExtractEmployees
 
 	}
 
+	/**
+	 * This method is currently not being used.
+	 * @param username
+	 */
 	public void getEmployee(String username)
 	{
 		Employee em = null;

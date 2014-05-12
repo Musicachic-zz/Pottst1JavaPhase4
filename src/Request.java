@@ -10,6 +10,9 @@
 
 import java.io.Serializable;
 
+/**
+ * This class contains the constructor and getters for the request header and payload.
+ */
 public class Request implements Serializable
 {
 	private String header;

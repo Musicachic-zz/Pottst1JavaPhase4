@@ -197,6 +197,9 @@ public class AddRemoveEmployeesDisplay
 		}
 	}
 
+	/**
+	 * This method allows you to modify employee data from the text file.
+	 */
 	public static void modifyEmployee()
 	{
 
@@ -248,10 +251,10 @@ public class AddRemoveEmployeesDisplay
 								switch (accessLevel)
 								{
 									case "E":
-										accessLevel = "EMPLOYEE";
+										accessLevel = "N";
 										break;
 									case "A":
-										accessLevel = "ADMIN";
+										accessLevel = "Y";
 										break;
 									default:
 										System.out.println("Please enter a valid option: ");
@@ -293,6 +296,9 @@ public class AddRemoveEmployeesDisplay
 		}
 	}
 
+	/**
+	 * This method allows you to see the current employee list in a format that is readable.
+	 */
 	public static void viewEmployeesList()
 	{
 
@@ -313,6 +319,11 @@ public class AddRemoveEmployeesDisplay
 
 	}
 
+	/**
+	 * This method writes all of the employees to a file again. This is used within other methods where changes to
+	 * the employee text file is being changed.
+	 * @param employeeList
+	 */
 	public static void writeAllEmployeesToFile(List<Employee> employeeList)
 	{
 
@@ -336,6 +347,11 @@ public class AddRemoveEmployeesDisplay
 		pw.close();
 	}
 
+	/**
+	 * This method is not being used, but it would be used to send the data from the client to the server.
+	 * @param employee
+	 * @throws Exception
+	 */
 	public static void sendRequest(Employee employee) throws Exception
 	{
 		Socket s = new Socket("localhost", 12345);

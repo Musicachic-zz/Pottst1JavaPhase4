@@ -13,8 +13,16 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.List;
 
+/**
+ * This class was intended to be the new client code. It was supposed to ask for the data that would in turn get sent
+ * to the server. I was not sure how to hook this up properly unfortunately so it doesn't work.
+ */
 public class Client
 {
+	/**
+	 * This is the client main method that would be sending data to the server if it worked properly.
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 

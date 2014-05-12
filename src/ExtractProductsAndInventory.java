@@ -15,10 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class does the work of reading the ProductsAndInventory.txt file.
+ */
 public class ExtractProductsAndInventory
 {
 	public static List<Product> prod = new ArrayList<>();
 
+	/**
+	 * This method reads the text file and outputs it into a readable format.
+	 * @return
+	 */
 	public static List<Product> readProductFile()
 	{
 

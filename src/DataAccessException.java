@@ -8,11 +8,17 @@
 *
 */
 
+/**
+ * This class is currently not being used since I never got the database integrated with the server.
+ * @author HoffmanZ
+ */
 public class DataAccessException extends Exception
 {
 
-	private static final long serialVersionUID = -3544791705580385588L;
-
+	/**
+	 * This is a error message method that would be used in the case of an error from the database.
+	 * @param message
+	 */
 	public DataAccessException(String message)
 	{
 		super(message);

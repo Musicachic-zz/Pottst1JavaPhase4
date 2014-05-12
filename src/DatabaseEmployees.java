@@ -11,6 +11,9 @@
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * This class contains the SQL statements for completing changes to the employee table.
+ */
 public class DatabaseEmployees
 {
 	private static final String DERBY_DRIVER_CLASS = "org.apache.derby.jdbc.EmbeddedDriver";
@@ -21,6 +24,9 @@ public class DatabaseEmployees
 	private static final String SELECT_EMP = "SELECT USERNAME, PASSWORD, MANAGER FROM EMPLOYEE WHERE USERNAME = ?";
 	private static final String UPDATE_USER = "UPDATE EMPLOYEE SET PASSWORD = ?, MANAGER = ? WHERE USERNAME = ?";
 
+	/**
+	 * This method does a check to see if the database exists.
+	 */
 	public void dbExist()
 	{
 		try
@@ -33,6 +39,9 @@ public class DatabaseEmployees
 		}
 	}
 
+	/**
+	 * This method contains the SQL statements to complete creating a new user.
+	 */
 	public void createUser()
 	{
 		Employee em = new Employee();
@@ -58,6 +67,9 @@ public class DatabaseEmployees
 		}
 	}
 
+	/**
+	 * This method contains the SQL statements to show the employees currently in the database.
+	 */
 	public void DisplayAllUsers()
 	{
 		ArrayList<Employee> employees = new ArrayList<>();
@@ -77,6 +89,11 @@ public class DatabaseEmployees
 
 	}
 
+	/**
+	 * This method contains the SQL code to delete a user from the database. It first allows you to search for the
+	 * username you want to delete and then executes the delete statement.
+	 * @param username
+	 */
 	public void DeleteUser(String username)
 	{
 
@@ -105,6 +122,11 @@ public class DatabaseEmployees
 		}
 	}
 
+	/**
+	 * This method contains the SQL code to update a user. It first allows you to find the username you want to
+	 * update and then contains the SQL statement to perform the change.
+	 * @param username
+	 */
 	public void UpdateUser(String username)
 	{
 		Employee em = null;

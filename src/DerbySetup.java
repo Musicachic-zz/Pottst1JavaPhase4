@@ -3,6 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * This class contains the setup for the Derby Database.
+ */
 public class DerbySetup
 {
 
@@ -15,6 +18,12 @@ public class DerbySetup
 	private static final String CREATE_INVENTORY_TABLE =
 			"CREATE TABLE INVENTORY (UPC VARCHAR(12), DESCRIPTION VARCHAR(30), PRICE DECIMAL(7,2), NUM_STOCK INTEGER)";
 
+	/**
+	 * This method is used to create the connection to the database and create the database.
+	 * @param args
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException
 	{
 		System.out.println("Seeking connection...");

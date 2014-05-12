@@ -163,6 +163,10 @@ public class ProductAndInventoryDisplay
 		}
 	}
 
+	/**
+	 * This method contains prompts to modify the inventory in the ProductsAndInventory.txt file and then completes
+	 * the update.
+	 */
 	public static void modifyInventory()
 	{
 
@@ -264,6 +268,9 @@ public class ProductAndInventoryDisplay
 
 	}
 
+	/**
+	 * This method allows you to view the inventory in the text file.
+	 */
 	public static void viewInventory()
 	{
 
@@ -284,6 +291,10 @@ public class ProductAndInventoryDisplay
 		System.out.println("+----------------------------------------------------+");
 	}
 
+	/**
+	 * This method writes all the inventory to the ProductAndInventory.txt file.
+	 * @param productList
+	 */
 	public static void writeAllInventoryToFile(List<Product> productList)
 	{
 

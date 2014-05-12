@@ -10,6 +10,10 @@
 
 import java.io.Serializable;
 
+/**
+ * This class contains the constructor and getters for the types of data we will be sending to the server so it would
+ * know what to expect.
+ */
 public class RequestCriteria implements Serializable
 {
 	private Action actionToTake;

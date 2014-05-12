@@ -10,10 +10,17 @@
 
 import java.util.Scanner;
 
+/**
+ * This class contains the prompts to the user when using the original text file code.
+ */
 public class AskForInput
 {
 	static Scanner sc = new Scanner(System.in);
 
+	/**
+	 * This method contains the first prompts to the user and then routes them appropriately through Employee or
+	 * Product changes based on their selection.
+	 */
 	public static void initialQuestion()
 	{
 
